@@ -8,161 +8,39 @@ import Certifications from "./Certifications";
 
 export default class Article extends Component {
   state = {
-    apropos: false,
-    formation: false,
-    experience: false,
-    competences: false,
-    certifications: false,
+    page: 'apropos'
   };
 
-  handleApropos = (e) => {
+
+  handleChange = (e) => {
     this.setState({
-      apropos: true,
-      formation: false,
-      experience: false,
-      competences: false,
-      certifications: false,
+      page: e
     });
   };
 
-  handleFormation = (e) => {
-    this.setState({
-      apropos: false,
-      formation: true,
-      experience: false,
-      competences: false,
-      certifications: false,
-    });
-  };
-
-  handleExperience = (e) => {
-    this.setState({
-      apropos: false,
-      formation: false,
-      experience: true,
-      competences: false,
-      certifications: false,
-    });
-  };
-
-  handleCompetence = (e) => {
-    this.setState({
-      apropos: false,
-      formation: false,
-      experience: false,
-      competences: true,
-      certifications: false,
-    });
-  };
-
-  handleCertifications = (e) => {
-    this.setState({
-      apropos: false,
-      formation: false,
-      experience: false,
-      competences: false,
-      certifications: true,
-    });
+  displayPage = () => {
+    if (this.state.page === "apropos") {
+      return <Apropos />;
+    } else if (this.state.page === "formation") {
+      return <Formation />;
+    } else if (this.state.page === "experience") {
+      return <Experience />;
+    } else if (this.state.page === "competences") {
+      return <Competences />;
+    } else if (this.state.page === "certifications") {
+      return <Certifications />;
+    }
   };
 
   render() {
-    return this.state.apropos ? (
-      <div className="container">
+    return (
+      <div>
         <div className="row">
           <div className="col-sm-8" style={{ backgroundColor: "blue" }}>
-            <Apropos />
+          {this.displayPage()}
           </div>
           <div className="col-sm" style={{ backgroundColor: "orange" }}>
-            <Menu
-              handleApropos={this.handleApropos}
-              handleFormation={this.handleFormation}
-              handleExperience={this.handleExperience}
-              handleCompetence={this.handleCompetence}
-              handleCertifications={this.handleCertifications}
-            />
-          </div>
-        </div>
-      </div>
-    ) : this.state.formation ? (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-8" style={{ backgroundColor: "blue" }}>
-            <Formation />
-          </div>
-          <div className="col-sm" style={{ backgroundColor: "orange" }}>
-            <Menu
-              handleApropos={this.handleApropos}
-              handleFormation={this.handleFormation}
-              handleExperience={this.handleExperience}
-              handleCompetence={this.handleCompetence}
-              handleCertifications={this.handleCertifications}
-            />
-          </div>
-        </div>
-      </div>
-    ) : this.state.experience ? (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-8" style={{ backgroundColor: "blue" }}>
-            <Experience />
-          </div>
-          <div className="col-sm" style={{ backgroundColor: "orange" }}>
-            <Menu
-              handleApropos={this.handleApropos}
-              handleFormation={this.handleFormation}
-              handleExperience={this.handleExperience}
-              handleCompetence={this.handleCompetence}
-              handleCertifications={this.handleCertifications}
-            />
-          </div>
-        </div>
-      </div>
-    ) : this.state.competences ? (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-8" style={{ backgroundColor: "blue" }}>
-            <Competences />
-          </div>
-          <div className="col-sm" style={{ backgroundColor: "orange" }}>
-            <Menu
-              handleApropos={this.handleApropos}
-              handleFormation={this.handleFormation}
-              handleExperience={this.handleExperience}
-              handleCompetence={this.handleCompetence}
-              handleCertifications={this.handleCertifications}
-            />
-          </div>
-        </div>
-      </div>
-    ) : this.state.certifications ? (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-8" style={{ backgroundColor: "blue" }}>
-            <Certifications />
-          </div>
-          <div className="col-sm" style={{ backgroundColor: "orange" }}>
-            <Menu
-              handleApropos={this.handleApropos}
-              handleFormation={this.handleFormation}
-              handleExperience={this.handleExperience}
-              handleCompetence={this.handleCompetence}
-              handleCertifications={this.handleCertifications}
-            />
-          </div>
-        </div>
-      </div>
-    ) : (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-8" style={{ backgroundColor: "blue" }}></div>
-          <div className="col-sm" style={{ backgroundColor: "orange" }}>
-            <Menu
-              handleApropos={this.handleApropos}
-              handleFormation={this.handleFormation}
-              handleExperience={this.handleExperience}
-              handleCompetence={this.handleCompetence}
-              handleCertifications={this.handleCertifications}
-            />
+            <Menu handleChange={this.handleChange} />
           </div>
         </div>
       </div>
