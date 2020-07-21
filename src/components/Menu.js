@@ -5,7 +5,7 @@ export default class Menu extends Component {
     return (
       <div>
         <ul>
-          <button onClick={this.props.handleApropos}>A propos de moi</button>
+          <button class="my-button" onClick={this.props.handleApropos}>A propos de moi</button>
           <button onClick={this.props.handleFormation}>Formation</button>
           <button onClick={this.props.handleExperience}>
             Expérience professionelle

@@ -16,15 +16,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* {this.state.password ? (
+        <button class="my-button" onClick={this.props.handleApropos}>A propos de moi</button>
+        {this.state.password ? (
           <Resume />
         ) : (
           <Password
             fonction={this.changePassword}
             leState={this.state}
           ></Password>
-        )} */}
-        <Resume />
+        )}
+        {/* <Resume /> */}
       </div>
     );
   }
